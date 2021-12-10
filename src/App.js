@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from "./styles/global";
+import { useState, useEffect } from "react";
+import API from "./api";
 
-function App() {
+import { Container } from "@mui/material";
+import Header from "./components/Header";
+
+import Router from "./Router";
+
+function App(props) {
+  const [games, setGames] = useState([]);
+
+  async function pegarDados() {
+    const response = await API.get(
+      `games?key=16e1774f77054c039ecafbbc8eb94ea7&ordering=-added`
+    );
+
+    setGames(response.data.results);
+  }
+
+  useEffect(() => {
+    pegarDados();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header name={"Games"} />
+      <GlobalStyle />
+      <Container
+        sx={{
+          justifyContent: "center",
+          bgcolor: "secundary.main",
+        }}
+        maxWidth="xl"
+      >
+        <Router games={games}></Router>
+      </Container>
+    </>
   );
 }
 
