@@ -6,3 +6,5 @@ Home: Página com uma listagem dos jogos mais populares
 Interna: Ao clicar num jogo da home o usuário deverá ser direcionado para a
 interna que mostrará o nome do jogo, foto, categorias, plataformas e desenvolvedor
 do jogo.
+
+Para realizar o teste, utilizei axios, prop drilling, react router, Mui(material design) e styled components para auxiliar na estilização dos componentes.
