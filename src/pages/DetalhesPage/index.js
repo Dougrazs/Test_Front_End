@@ -30,7 +30,6 @@ const DetalhesPage = (props) => {
     setPlatform3(response.data.platforms[2].platform);
     setPlatform4(response.data.platforms[3].platform);
     setGenre(response.data.genres[0]);
-    console.log(response.data);
   }
 
   useEffect(() => {
